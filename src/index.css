@@ -1,0 +1,106 @@
+/* === GLOBAL === */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  background: #f5f6fa;
+  padding: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+h1 {
+  text-align: center;
+  color: #2d3436;
+  margin-bottom: 20px;
+}
+
+/* === CONTAINER === */
+
+.app-container {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  width: 380px;
+  min-height: 500px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* === FORM === */
+
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+form input[type="time"],
+form input[type="text"] {
+  padding: 8px;
+  border: 1px solid #ced6e0;
+  border-radius: 5px;
+  width: 100%;
+}
+
+form button {
+  padding: 8px 13px;
+  border: none;
+  background: #0984e3;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+form button:hover {
+  background: #0873c7;
+}
+
+/* === LIST === */
+
+ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* === TASK ITEM === */
+
+li {
+  background: #dfe6e9;
+  padding: 12px;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+li.completed {
+  background: #b2bec3;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+li label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+li button {
+  background: #d63031;
+  border: none;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+li button:hover {
+  background: #b02021;
+}
