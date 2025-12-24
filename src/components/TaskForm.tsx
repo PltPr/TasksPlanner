@@ -1,27 +1,18 @@
 import { useState } from 'react';
-import type { Task } from '../types/Task';
 
 interface Props {
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  onAdd: (title: string, time: string) => void;
 }
 
-const TaskForm = ({ setTasks }: Props) => {
+const TaskForm = ({ onAdd }: Props) => {
   const [title, setTitle] = useState('');
   const [time, setTime] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!title || !time) return;
 
-    if (!title.trim() || !time.trim()) return;
-
-    const newTask: Task = {
-      id: crypto.randomUUID(),
-      title,
-      time,
-      completed: false,
-    };
-
-    setTasks(prev => [...prev, newTask]);
+    onAdd(title, time);
     setTitle('');
     setTime('');
   };
@@ -32,18 +23,16 @@ const TaskForm = ({ setTasks }: Props) => {
         type="time"
         value={time}
         onChange={e => setTime(e.target.value)}
-        required
       />
 
       <input
         type="text"
-        placeholder="zadanie..."
+        placeholder="Zadanie..."
         value={title}
         onChange={e => setTitle(e.target.value)}
-        required
       />
 
-      <button type="submit">dodaj</button>
+      <button type="submit">Dodaj</button>
     </form>
   );
 };

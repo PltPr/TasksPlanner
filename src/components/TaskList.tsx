@@ -1,35 +1,29 @@
-import TaskItem from './TaskItem';
 import type { Task } from '../types/Task';
 
 interface Props {
   tasks: Task[];
-  setTasks: React.Dispatch<React.SetStateAction<Task[]>>;
+  onToggle: (id: string) => void;
+  onDelete: (id: string) => void;
 }
 
-const TaskList = ({ tasks, setTasks }: Props) => {
-  const toggleTask = (id: string) => {
-    setTasks(prev =>
-      prev.map(task =>
-        task.id === id
-          ? { ...task, completed: !task.completed }
-          : task
-      )
-    );
-  };
-
-  const deleteTask = (id: string) => {
-    setTasks(prev => prev.filter(task => task.id !== id));
-  };
-
+const TaskList = ({ tasks, onToggle, onDelete }: Props) => {
   return (
     <ul>
       {tasks.map(task => (
-        <TaskItem
-          key={task.id}
-          task={task}
-          toggleTask={toggleTask}
-          deleteTask={deleteTask}
-        />
+        <li key={task.id}
+        className={task.completed ? 'completed' : ''}
+        >
+          <label>
+            <input
+              type="checkbox"
+              checked={task.completed}
+              onChange={() => onToggle(task.id)}
+            />
+            {task.time} — {task.title}
+          </label>
+
+          <button onClick={() => onDelete(task.id)}>X</button>
+        </li>
       ))}
     </ul>
   );
